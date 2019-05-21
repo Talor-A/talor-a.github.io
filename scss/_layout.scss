@@ -2,8 +2,8 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
+    border-top: 10px solid $brand-color;
+    // border-bottom: 1px solid $grey-color-light;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
@@ -27,19 +27,41 @@
     float: right;
     line-height: 56px;
 
+
     .menu-icon {
         display: none;
     }
-
     .page-link {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
         color: $text-color;
         line-height: $base-line-height;
-
+        text-decoration: none;
         // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
+        // &:not(:first-child) {
             margin-left: 20px;
+        // }
+        // padding: 0px 15px 0px 15px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: -0.25em;
+            right: -0.25em;
+            background-color: $brand-color;
+            transform-origin: center right;
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+          }
+          &:hover::before {
+            transform: scaleX(1);
+            transform-origin: center left;
+          }
         }
-    }
 
     @include media-query($on-palm) {
         position: absolute;
@@ -82,6 +104,7 @@
         .page-link {
             display: block;
             padding: 5px 10px;
+            margin: 0px;
         }
     }
 }
