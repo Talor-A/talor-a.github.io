@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "talor-site",
+  "name": "taloranderson.com",
   "launch_path": "/index.html",
   "description": "Talor Anderson&#39;s Website",
   "icons": {
@@ -18,7 +18,7 @@
   },
   "locales": {
     "en": {
-      "name": "talor-site",
+      "name": "taloranderson.com",
       "description": "Talor Anderson&#39;s Website"
     }
   }

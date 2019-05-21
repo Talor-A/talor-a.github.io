@@ -114,14 +114,14 @@ gulp.task('serve', ['jekyll-build'], () => {
 
   gulp.task('fix-config', () => {
     gulp.src('_config.yml')
-      .pipe($.replace('baseurl: ""', 'baseurl: "talor-site"'))
+      // .pipe($.replace('baseurl: ""', 'baseurl: "talor-site"'))
       .pipe($.clean())
       .pipe(gulp.dest('.'));
   });
 
   gulp.task('revert-config', () => {
     gulp.src('_config.yml')
-        .pipe($.replace('baseurl: "talor-site"', 'baseurl: ""'))
+        // .pipe($.replace('baseurl: "talor-site"', 'baseurl: ""'))
         .pipe($.clean())
         .pipe(gulp.dest('.'));
   });
