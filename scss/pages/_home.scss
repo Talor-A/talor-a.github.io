@@ -1,0 +1,16 @@
+.home {
+  .home-title {
+    margin: 100px 0px;
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1;
+
+    @include media-query($on-laptop) {
+      font-size: 36px;
+    }
+  }
+  h3 {
+    margin-top: 72px;
+  }
+  padding-bottom: 100px;
+}

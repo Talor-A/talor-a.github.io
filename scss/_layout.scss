@@ -22,7 +22,25 @@
         color: $grey-color-dark;
     }
 }
-
+.site-socials {
+    line-height: 56px;
+    display: inline-block;
+    margin: 0px 20px;
+    .icon {
+        margin-left: 10px;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    .icon > svg {
+        transition: fill 0.2s linear;
+        width: 24px;
+        height: 24px;
+        &:hover > path{
+            fill: $brand-color;
+        }
+    }
+}
 .site-nav {
     float: right;
     line-height: 56px;
