@@ -22,6 +22,7 @@ This is a compilation / reference of my favorite web design resources. This list
 
 - [heropatterns.com](heropatterns.com): scalable svg and css based backgrounds for websites. The header for this article and a few others are generated from this site.
 - [cssfx](http://cssfx.dev): clean CSS interactions with no unnecessary markup. 
+- [Feather Icons](https://feathericons.com): used in the header of this site. play nice out of the box with CSS styles
 
 # Lists
 
