@@ -99,6 +99,7 @@ gulp.task('serve', ['jekyll-build'], () => {
     'css/**/*.css',
     'scripts/**/*.js',
     '_includes/**/*.html',
+    '_includes/**/*.md',
     '_layouts/**/*.html',
     '_posts/**/*.md',
     'index.html'
