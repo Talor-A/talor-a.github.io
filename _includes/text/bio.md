@@ -1,7 +1,7 @@
 
 Some of my favorite projects include a laser welding system controlled with python, a web application in Javascript catered to students, and an application for iOS and android built in React Native.
 
-Outside my work, I'm an avid bullet journal-er, frequent rock climber, and a current student at Cal Poly Pomona . 
+Outside my work, find me flying drones or climbing rocks somewhere 🧗‍♂️. 
 
 ### Education
 
@@ -14,7 +14,7 @@ California State Polytechnic University, Pomona
 
 Scratch Tools, LLC.
 
-- Creating online learning tools for students 📝. Built in Los Angeles. Launching soon.
+- Creating online learning tools for students 📘. Built in Los Angeles. Launching soon.
 
 ### Past Work
 

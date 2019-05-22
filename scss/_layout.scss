@@ -287,6 +287,16 @@
   border-bottom-color: #d3466c;
 }
 .underline-green {
-    @include underline();
-    border-bottom-color: #30975b;
-  }
+  @include underline();
+  border-bottom-color: #30975b;
+}
+
+.shapes {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.letter, .home-content {
+  opacity: 0;
+}

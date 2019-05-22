@@ -4,12 +4,13 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
+
 const $ = gulpLoadPlugins();
 
 // Delete the _site directory.
 gulp.task('cleanup-build', () => {
-  return gulp.src('_site', {read: false})
-      .pipe($.clean());
+  return gulp.src('_site', { read: false })
+    .pipe($.clean());
 });
 
 // Minify the HTML.
@@ -44,12 +45,15 @@ gulp.task('scripts', () => {
   gulp.src([
     // Note: You need to explicitly list your scripts here in the right order
     //       to be correctly concatenated
-    './_scripts/main.js'
+    // './_scripts/anime.min.js',
+    // './_scripts/charming.min.js',
+    './_scripts/wordfx.js',
+    './_scripts/main.js',
   ])
-    .pipe($.concat('main.min.js'))
     .pipe($.babel())
-    .pipe($.uglify())
-    .pipe(gulp.dest('scripts'));
+    // .pipe($.uglify())
+  .pipe($.concat('main.min.js'))
+  .pipe(gulp.dest('scripts'));
 });
 
 // Minify and add prefix to css.
@@ -74,12 +78,12 @@ gulp.task('css', () => {
 
 // Compile scss to css.
 gulp.task('scss', () => {
-    return gulp.src('scss/main.scss')
-        .pipe($.sass({
-            includePaths: ['css'],
-            onError: browserSync.notify
-        }))
-        .pipe(gulp.dest('css'));
+  return gulp.src('scss/main.scss')
+    .pipe($.sass({
+      includePaths: ['css'],
+      onError: browserSync.notify
+    }))
+    .pipe(gulp.dest('css'));
 });
 
 // Watch change in files.
@@ -113,19 +117,19 @@ gulp.task('serve', ['jekyll-build'], () => {
 });
 
 
-  gulp.task('fix-config', () => {
-    gulp.src('_config.yml')
-      // .pipe($.replace('baseurl: ""', 'baseurl: "talor-site"'))
-      .pipe($.clean())
-      .pipe(gulp.dest('.'));
-  });
+gulp.task('fix-config', () => {
+  gulp.src('_config.yml')
+    // .pipe($.replace('baseurl: ""', 'baseurl: "talor-site"'))
+    .pipe($.clean())
+    .pipe(gulp.dest('.'));
+});
 
-  gulp.task('revert-config', () => {
-    gulp.src('_config.yml')
-        // .pipe($.replace('baseurl: "talor-site"', 'baseurl: ""'))
-        .pipe($.clean())
-        .pipe(gulp.dest('.'));
-  });
+gulp.task('revert-config', () => {
+  gulp.src('_config.yml')
+    // .pipe($.replace('baseurl: "talor-site"', 'baseurl: ""'))
+    .pipe($.clean())
+    .pipe(gulp.dest('.'));
+});
 
 gulp.task('jekyll-build', ['scripts', 'scss'], $.shell.task(['jekyll build']));
 
