@@ -1,5 +1,7 @@
 ---
-Published: false
+layout: post
+title: Junior Career Guide
+published: false
 ---
 
 Talor Anderson

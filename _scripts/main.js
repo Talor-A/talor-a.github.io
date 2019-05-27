@@ -1,3 +1,3 @@
-import anime from 'animejs'
+// import anime from 'animejs'
 
-console.log(anime)
+// console.log(anime)
