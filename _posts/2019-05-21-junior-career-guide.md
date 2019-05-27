@@ -29,25 +29,27 @@ main points:
 
 
 
-(**Transition**: Now, something you may not know is that Los Angeles is known as the ‘Birthplace of Skateboarding’. But how did it get this name?)
+(**Transition**: First, let's start off with your portfolio.)
 
 
 
 **Body**
 
-1. **Your portfolio** is what you'll use as an example of what you can do for a possible client. 
-
-   1. First you'll need to determine what your focus is. 
+1. If you want to start freelancing, you should have something you can provide for others.
+1. First, work on collecting a portfolio of things you've created to show to potential employers.
       1. I decided to focus on web design, as that's where my initial experience was.
          I created a small portfolio of my previous work, which has now grown to include several custom client websites and my internship work. It isn't the strongest one out there, but it doesn't have to be! Remember - your career is just starting. 
    2. Next, you'll want to figure out a way to show your portfolio to others.
-      1. Some people create a website. This is a great way to make a public 
+      1. Some people create a website. This is a great way to make your achievements public and display them in a personal manner. 
       2. You don't have to do too much though. Most clients have been just fine with me emailing them a few screenshots of my past work, but of course this will depend on the nature of the service you're providing. 
    3. Lastly, remember that your portfolio is just a way to show off what **you** can do. 
-      1. Being able to confidently talk about what you do and how is just as important.
+      1. Being able to confidently talk about what you do and how is just as important. Prepare a 
       2. You should not limit yourself by what's on your portfolio.
+   
 
-2. **Meet new people.**
+(**Transition:** Now that you've got your sales pitch )
+
+1. **Meet new people.**
 
    1.  One of the most important things you can do for yourself and for your career is to always be open to meeting new people. 
 
@@ -58,13 +60,14 @@ main points:
          - Through family friends
          - At a concert
 
-         When working with people you know, I personally have felt much safer and less in danger of getting ghosted / taken advantage of (though you should always be careful).
+         When working with people you know, I personally have felt much safer and less in danger of getting ghosted / taken advantage of (though you should always be careful). 
 
       2. Taking the time to 
 
-3. **Know your worth.**
 
-   1. 
+
+
+
 
 **Conclusion**
 
