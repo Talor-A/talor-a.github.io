@@ -1,0 +1,24 @@
+---
+---
+<div class="portfolio">
+  <h1 style="margin-bottom: 100px;">Past Work</h1>
+  <div class="portfolio-list ">
+    {% for post in site.portfolio %}
+    <a href="{{ post.url | relative_url }}">
+      <div class="portfolio-item portfolio-item-{{post.class}}">
+        <div class="portfolio-item-inner">
+          <h2>
+            {{post.title}}
+          </h2>
+          <em class="post-role">Role: {{post.role}}</em>
+          <p class="post-description">{{post.short-description}}</p>
+          <p class="post-cta">read more ⇢</p>
+        </div>
+        <div class="portfolio-item-image">
+          <div style="background-image: url({{post.image}})"></div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>

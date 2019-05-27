@@ -39,3 +39,8 @@ exclude: [
   "scss",
   "validate"
 ]
+# COLLECTIONS
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/

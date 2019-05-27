@@ -5,6 +5,15 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var log = require('gulplog');
+var sourcemaps = require('gulp-sourcemaps');
+var reactify = require('reactify');
+var babelify = require('babelify');
+
+
 const $ = gulpLoadPlugins();
 
 // Delete the _site directory.
@@ -40,21 +49,26 @@ gulp.task('minify-images', () => {
     .pipe(gulp.dest('_site/images'));
 });
 
-// Concatenate, transpiles ES2015 code to ES5 and minify JavaScript.
 gulp.task('scripts', () => {
-  gulp.src([
-    // Note: You need to explicitly list your scripts here in the right order
-    //       to be correctly concatenated
-    './_scripts/anime.min.js',
-    './_scripts/charming.min.js',
-    './_scripts/wordfx.js',
-    './_scripts/main.js',
-  ])
-    .pipe($.babel())
-    // .pipe($.uglify())
-  .pipe($.concat('main.min.js'))
-  .pipe(gulp.dest('scripts'));
+  // set up the browserify instance on a task basis
+  var b = browserify({
+    entries: './_scripts/main.js',
+    debug: true,
+    // defining transforms here will avoid crashing your stream
+    transform: [babelify, reactify]
+  });
+
+  return b.bundle()
+    .pipe(source('main.min.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        // .pipe($.uglify())
+        .on('error', log.error)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('scripts'));
 });
+
 
 // Minify and add prefix to css.
 gulp.task('css', () => {

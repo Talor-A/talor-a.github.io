@@ -5,6 +5,7 @@
   border-top: 10px solid $brand-color;
   // border-bottom: 1px solid $grey-color-light;
   min-height: 56px;
+  // background-color: $dark-blue;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -29,8 +30,17 @@
   .icon {
     margin-left: 10px;
   }
-  a:hover {
-    text-decoration: none;
+
+  a {
+    color: $brand-color;
+
+    &:visited {
+      color: $brand-color;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $text-color;
+    }
   }
   // .icon > svg {
   //     transition: fill 0.2s linear;
@@ -289,14 +299,4 @@
 .underline-green {
   @include underline();
   border-bottom-color: #30975b;
-}
-
-.shapes {
-	position: fixed;
-	top: 0;
-	left: 0;
-}
-
-.letter, .home-content {
-  opacity: 0;
 }
