@@ -24,7 +24,7 @@ export const createDotGrid = (selector) => {
   var numberOfElements = grid[0] * grid[1];
   var noise = []
 
-  var delay = 4000;
+  var delay = 2000;
   var duration = 2000;
 
   var totalAnimationTime = delay + duration
@@ -74,6 +74,27 @@ export const createDotGrid = (selector) => {
     setTimeout(anim2.play, noise[i])
 
   }
+  return testArea
 }
 
-createDotGrid('.experiment1')
+const dotGrid = createDotGrid('.experiment1')
+
+const colors = [
+  "#3837D6",
+  "#502772",
+"#732752",
+"#257243",  
+]
+dotGrid.style.color = colors[0]
+const controls = document.createElement("div")
+controls.className="controls"
+
+colors.forEach((color)=> {
+  const button = document.createElement("span");
+  button.style.backgroundColor = color;
+  button.className = "circle-button ";
+  button.onclick = ()=> dotGrid.style.color = color;
+  controls.appendChild(button)
+})
+
+dotGrid.appendChild(controls)

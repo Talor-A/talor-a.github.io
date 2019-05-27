@@ -5,7 +5,6 @@
   border-top: 10px solid $brand-color;
   // border-bottom: 1px solid $grey-color-light;
   min-height: 56px;
-  // background-color: $dark-blue;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -285,31 +284,34 @@
 
 .underline-purple {
   @include underline();
-  border-bottom-color: #8146d3;
+  border-bottom-color: $color-purple;
 }
 .underline-blue {
   @include underline();
-  border-bottom-color: #466ed3;
+  border-bottom-color: $color-blue;
 }
 
 .underline-red {
   @include underline();
-  border-bottom-color: #d3466c;
+  border-bottom-color: $color-red;
 }
 .underline-green {
   @include underline();
-  border-bottom-color: #30975b;
+  border-bottom-color: $color-green;
 }
 
-
+.experiment1 {
+  margin-top: 64px;
+  margin-bottom: 64px;
   .dots-wrapper {
-    
-    width: 64*10px;
+    width: 48 * 10px;
     // height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .dot {
@@ -318,21 +320,22 @@
     // z-index: 5;
     width: 32px;
     height: 32px;
-    margin: 16px;
+    margin: 8px;
     border: 1px solid currentColor;
     background-color: $background-color;
     border-radius: 50%;
   }
-  .dots-shadow-wrapper {    
-    width: 64*10px;
-    // height: 100%;
-    z-index: 0;
+  .dots-shadow-wrapper {
+    width: 48 * 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     position: absolute;
-    // background-color: #30975b;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
   }
   
   .dot-shadow {
@@ -341,8 +344,63 @@
     // z-index: 1;
     width: 32px;
     height: 32px;
-    margin: 16px;
+    margin: 8px;
     border-radius: 50%;
   }
+  .controls {
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+  }
+  .circle-button {
+    width: 16px;
+    height: 16px;
+    margin: 8px;
+    background-color: currentColor;
+    display: inline-block;
+    border-radius: 50%;
+  }
+}
 
+.button {
+  position: relative;
+  z-index: 1;
+  text-decoration: none !important;
+  color: $text-color;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+  &:visited {
+    color: $text-color;
+  }
 
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: -0.25em;
+    right: -0.25em;
+    background-color: $brand-color;
+    transform-origin: bottom center;
+    transform: scaleY(0.1);
+    transition: all 0.1s ease-in-out;
+  }
+
+  &:hover::before {
+    transform: scaleY(1);
+  }
+  &.purple::before {
+    background-color: $color-purple;
+  }
+  &.blue::before {
+    background-color: $color-blue;
+  }
+  &.red::before {
+    background-color: $color-red;
+  }
+  &.green::before {
+    background-color: $color-green;
+  }
+}

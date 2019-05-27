@@ -12,6 +12,8 @@ var log = require('gulplog');
 var sourcemaps = require('gulp-sourcemaps');
 var reactify = require('reactify');
 var babelify = require('babelify');
+var es = require('event-stream')
+var glob = require('glob')
 
 
 const $ = gulpLoadPlugins();
@@ -49,6 +51,29 @@ gulp.task('minify-images', () => {
     .pipe(gulp.dest('_site/images'));
 });
 
+
+gulp.task('experiments', (done) => {
+
+  glob('./_scripts/experiments/*.js', (err, files) => {
+    if(err) done(err)
+    let tasks = files.map((entry) =>
+      browserify({ 
+        entries: [entry],
+        debug:true,
+        transform: [babelify, reactify]
+      })
+        .bundle()
+        .pipe(source(entry))
+        .pipe($.rename({
+          dirname: 'experiments/',
+          // extname: '.bundle.js'
+        }))
+        .pipe(gulp.dest('scripts/'))
+    );
+    es.merge(tasks).on('end', done);
+  })
+})
+
 gulp.task('scripts', () => {
   // set up the browserify instance on a task basis
   var b = browserify({
@@ -61,10 +86,10 @@ gulp.task('scripts', () => {
   return b.bundle()
     .pipe(source('main.min.js'))
     .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
-        // .pipe($.uglify())
-        .on('error', log.error)
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    // Add transformation tasks to the pipeline here.
+    // .pipe($.uglify())
+    .on('error', log.error)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('scripts'));
 });
@@ -131,7 +156,7 @@ gulp.task('serve', ['jekyll-build'], () => {
   gulp.watch('scss/**/*.scss', ['scss']);
 
   // Watch JavaScript changes.
-  gulp.watch('_scripts/**/*.js', ['scripts']);
+  gulp.watch('_scripts/**/*.js', ['scripts','experiments']);
 });
 
 
@@ -149,7 +174,7 @@ gulp.task('revert-config', () => {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('jekyll-build', ['scripts', 'scss'], $.shell.task(['jekyll build']));
+gulp.task('jekyll-build', ['scripts','experiments', 'scss'], $.shell.task(['jekyll build']));
 
 gulp.task('jekyll-build-for-deploy', $.shell.task(['jekyll build']));
 
@@ -160,6 +185,7 @@ gulp.task('build', () =>
     'cleanup-build',
     'scss',
     'scripts',
+    'experiments',
     'jekyll-build-for-deploy',
     'minify-html',
     'css',

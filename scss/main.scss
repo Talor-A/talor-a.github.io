@@ -14,13 +14,18 @@ $text-color:       #1E1D1E;
 $background-color: #EFEFF0;
 $brand-color:      #3a7fd3;
 
+$color-purple: #8146d3;
+$color-blue: #466ed3;
+$color-red: #d3466c;
+$color-green: #30975b;
+
 
 $grey-color:       #353535;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
-$dark-blue: #2f4680;
 $on-palm:          600px;
 $on-laptop:        800px;
+
 
 
 // Using media queries with like this:

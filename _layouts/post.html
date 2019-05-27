@@ -12,11 +12,11 @@ layout: default
     {{ content }}
   </article>
 
-  {% for javascript in page.custom-javascript-list %}
+  {% for javascript in page.customjs %}
     <script src="{{ javascript }}"></script>
   {% endfor %}
 
-  {% for css in page.custom-css-list %}
+  {% for css in page.customcss %}
       <link href="{{ css }}" rel="stylesheet">
   {% endfor %}
 
