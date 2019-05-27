@@ -120,7 +120,11 @@ gulp.task('serve', ['jekyll-build'], () => {
     '_includes/**/*.md',
     '_layouts/**/*.html',
     '_posts/**/*.md',
-    'index.html'
+    '*.html',
+    '_experiments/**/*.html',
+    '_experiments/**/*.md',
+    '_portfolio/**/*.html',
+    '_portfolio/**/*.md',
   ], ['jekyll-build', browserSync.reload]);
 
   // Watch scss changes.

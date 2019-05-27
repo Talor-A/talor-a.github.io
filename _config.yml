@@ -44,3 +44,8 @@ collections:
   portfolio:
     output: true
     permalink: /portfolio/:path/
+  experiments:
+    output: true
+    permalink: /experiments/:path/
+
+  

@@ -300,3 +300,49 @@
   @include underline();
   border-bottom-color: #30975b;
 }
+
+
+  .dots-wrapper {
+    
+    width: 64*10px;
+    // height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dot {
+    position: relative;
+    box-sizing: border-box;
+    // z-index: 5;
+    width: 32px;
+    height: 32px;
+    margin: 16px;
+    border: 1px solid currentColor;
+    background-color: $background-color;
+    border-radius: 50%;
+  }
+  .dots-shadow-wrapper {    
+    width: 64*10px;
+    // height: 100%;
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    // background-color: #30975b;
+  }
+  
+  .dot-shadow {
+    position: relative;
+    background-color: currentColor;
+    // z-index: 1;
+    width: 32px;
+    height: 32px;
+    margin: 16px;
+    border-radius: 50%;
+  }
+
+
