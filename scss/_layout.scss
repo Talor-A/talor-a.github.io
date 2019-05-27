@@ -304,6 +304,7 @@
   margin-top: 64px;
   margin-bottom: 64px;
   .dots-wrapper {
+    -webkit-transform: translate3d(0,0,0);
     width: 48 * 10px;
     // height: 100%;
     display: flex;
@@ -315,6 +316,7 @@
   }
   
   .dot {
+    -webkit-transform: translate3d(0,0,0);
     position: relative;
     box-sizing: border-box;
     // z-index: 5;
@@ -354,12 +356,12 @@
     width: max-content;
   }
   .circle-button {
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 12px;
     margin: 8px;
     background-color: currentColor;
     display: inline-block;
-    border-radius: 50%;
+    // border-radius: 50%;
   }
 }
 
