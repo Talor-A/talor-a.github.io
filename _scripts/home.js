@@ -46,6 +46,8 @@ const squareAnimations = [
   }
 ]
 
+window.addEventListener('load', () => {
+
 anime({
   targets: '.home-colors > div',
   opacity: [0, 1],
@@ -281,3 +283,4 @@ portfolio_config.forEach(conf => {
   });
 })
 
+})
