@@ -13,8 +13,8 @@
       margin-left: 10px;
 
       @include media-query($on-palm) {
-          justify-self: end;
-          // grid-row: 4;
+        justify-self: end;
+        // grid-row: 4;
       }
 
       border-bottom: solid 1px $grey-color;
@@ -38,7 +38,6 @@
       padding-right: 6px;
 
       @include media-query($on-palm) {
-
       }
     }
     .title-2 {
@@ -48,8 +47,6 @@
       justify-self: end;
       margin-bottom: 0px;
       @include media-query($on-palm) {
-
-
       }
     }
 
@@ -97,8 +94,8 @@
         grid-column: 1/3;
         grid-row: 1/4;
         align-self: center;
-        grid-template-columns: 1fr ;
-        grid-template-rows: repeat(6,1fr);
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
       }
 
       display: grid;
@@ -123,16 +120,24 @@
       font-size: 3em;
       text-align: center;
     }
-    max-width: 660px;
+    max-width: $on-palm;
+    .bio {
+      @include media-query($on-palm) {
+        margin: 10px;
+      }
+    }
   }
 
-  .portfolio-intro {
+  #portfolio-section {
     height: 25vh;
     display: flex;
     align-items: center;
     justify-content: center;
     > h1 {
       font-size: 3em;
+    }
+    > em {
+      color: $grey-color;
     }
   }
   .portfolio {
@@ -142,23 +147,41 @@
     grid-template-rows: 1fr auto auto 1fr;
 
     .portfolio-desc {
+      z-index: 200;
+      white-space: pre-wrap;
       > h1 {
-        font-size: 3em;
+        @include min-media-query($on-laptop) {
+          font-size: 3em;
+        }
+        display: inline-block;
       }
       > span {
         color: $grey-color;
         font-weight: 400;
+        display: inline-block;
       }
-      grid-column: 4/11;
-      grid-row: 2/3;
-      z-index: 1;
+      grid-column: 1/-1;
+      @include min-media-query($on-palm) {
+        grid-column: 3/-3;
+      }
+      grid-row: 4;
+
+      // z-index: 1;
       align-self: center;
+
+      .block-revealer__element {
+        z-index: 250;
+      }
     }
     .portfolio-image-wrap {
       position: relative;
-      grid-column: 6/-2;
+      grid-column: 1/-1;
+      @include min-media-query($on-palm) {
+        grid-column: 3/-3;
+      }
       grid-row: 2/3;
       .portfolio-image-overlay {
+        z-index: 2;
         display: block;
         content: "";
         position: absolute;
@@ -173,30 +196,46 @@
         display: block;
         content: "";
         position: absolute;
-        top: 40px;
-        left: 40px;
-        right: -40px;
-        bottom: -40px;
+        top: 0px; // top: 40px;
+        left: 0px; // left: 40px;
+        right: 0px; // right: -40px;
+        bottom: 0px; // bottom: -40px;
         background-color: $color-peach;
         z-index: -1;
+        @include media-query($on-palm) {
+          display: none;
+        }
       }
     }
 
     &.amada {
       .portfolio-desc {
-        grid-column: 4/11;
-        grid-row: 4;
-        z-index: 1;
-        align-self: center;
+        @include min-media-query($on-laptop) {
+          grid-column: 4/11;
+          grid-row: 4;
+          z-index: 1;
+          align-self: center;
+        }
       }
       .portfolio-image-wrap {
-        grid-column: 4/-4;
-        grid-row: 2/3;
+        @include min-media-query($on-laptop) {
+          grid-column: 4/-4;
+          grid-row: 2/3;
+        }
       }
     }
     &.livinghealth {
       // background-color: $color-grass;
+      .portfolio-desc {
+        @include min-media-query($on-laptop) {
+          grid-row: 2/3;
+          grid-column: 4/11;
+        }
+      }
       .portfolio-image-wrap {
+        @include min-media-query($on-laptop) {
+          grid-column: 6/-2
+        }        
         .portfolio-image-overlay {
           background-color: lighten($color-grass, $amount: 20);
           opacity: 0.37;
@@ -207,16 +246,19 @@
       }
     }
     &.scratch {
-      // background-color: $color-sky;
       .portfolio-desc {
-        grid-column: 9/11;
-        // grid-row: 4;
-        z-index: 1;
-        align-self: center;
+        // z-index: 1;
+        @include min-media-query($on-laptop) {
+          grid-column: 9/11;
+          grid-row: 2/3;
+          align-self: center;
+        }
       }
       .portfolio-image-wrap {
-        grid-column: 2/8;
-        grid-row: 2/3;
+        @include min-media-query($on-laptop) {
+          grid-column: 2/8;
+          grid-row: 2/3;
+        }
         .portfolio-image-bg {
           background-color: $color-sea;
         }

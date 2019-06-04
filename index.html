@@ -32,14 +32,17 @@ layout: blank
 
   </section>
 
-  <section class="about">
+  <section class="about" id="about">
     <h1>About Me</h1>
-    {% capture bio %}{% include text/bio.md %}{% endcapture %}
-    {{ bio | markdownify }}
+    <div class="bio">
+      {% capture bio %}{% include text/bio.md %}{% endcapture %}
+      {{ bio | markdownify }}
+    </div>
   </section>
 
-  <section class="portfolio-intro">
+  <section class="portfolio-intro" id="portfolio-section">
     <h1>Past Work</h1>
+    <em>(More info coming soon)</em>
   </section>
   {% for post in site.portfolio %}
   <section class=" portfolio {{post.class}}">
