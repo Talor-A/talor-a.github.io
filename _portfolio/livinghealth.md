@@ -3,7 +3,7 @@ layout: post
 title: Living Health TV
 class: livinghealth
 role: Web Designer and Content Creator
-image: "images/livinghealth.png"
+image: "images/veggies.jpg"
 short-description: attracted new audiences with custom website and engaging content
 
 ---

@@ -2,8 +2,8 @@
 layout: post
 title: Amada Miyachi America, Inc.
 class: amada
-role: Intern
-image: "images/amada.png"
+role: Laser Experimentation Intern, R&D Division
+image: "images/laboratory.jpg"
 short-description: Built a proof-of-concept realtime laser monitoring app never before seen in industry.
 
 ---

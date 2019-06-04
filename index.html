@@ -3,10 +3,90 @@ layout: default
 ---
 
 <div class="home">
-  <h1 class="home-title">Hi! 👋 I'm Talor, a student and web application developer.</h1>
+  <section class="intro full-height">
+    <div class="home-colors">
+      <div class="col1"></div>
+      <div class="col2"></div>
+      <div class="col3"></div>
+      <div class="col4"></div>
+      <div class="col5"></div>
+      <div class="col6"></div>
+    </div>
+    <h1 class="title-1">Hi there!</h1>
+    <h1 class="title-2">I'm Talor Anderson.</h1>
+    <div class="home-nav">
+      <a href="#">See what I do</a>
+      <a target="_blank" rel="noopener noreferrer" href="{{ site.resume_url }}">Resume</a>
+      <a href="#">Contact</a>
+    </div>
 
-  <div class="home-content">
-    {% capture bio %}{% include text/bio.md %}{% endcapture %}
-    {{ bio | markdownify }}
-  </div>
+
+    <div class="home-bottom">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+  </section>
+
+  {% for post in site.portfolio %}
+  <section class=" portfolio {{post.class}} full-height">
+
+      <div  class="portfolio-desc">
+          <h1>{{post.title}}</h1>
+          <span>{{post.role}}</span>
+        </div>
+    <div class="portfolio-image-wrap">
+      <div class="portfolio-image-bg"></div>
+      <div class="portfolio-image-overlay"></div>
+      <img class="portfolio-image" src="{{post.image}}" />
+    </div>
+
+
+  </section>
+
+  {% endfor %}
+
+
+  <script>
+    window.addEventListener('load', function () {
+      var anime = window.anime;
+      var col1 = document.querySelector('.col1');
+      var col2 = document.querySelector('.col2');
+      var col3 = document.querySelector('.col3');
+      var col4 = document.querySelector('.col4');
+      var col5 = document.querySelector('.col5');
+      var col6 = document.querySelector('.col6');
+
+      var ani1 = anime({
+        targets: col1,
+        rotate: 180,
+        autoplay: false
+      })
+
+      col1.addEventListener("mouseenter", ani1.play);
+
+      var ani2 = anime({
+        targets: col2,
+        rotateX: 360,
+        autoplay: false,
+      })
+      col2.addEventListener("mouseenter", ani2.play);
+
+      var ani3 = anime({
+        targets: col3,
+        rotateY: 360,
+        autoplay: false,
+        easing: 'easeInOutSine'
+      })
+      col3.addEventListener("mouseenter", ani3.play);
+
+    })
+
+
+  </script>
+
 </div>

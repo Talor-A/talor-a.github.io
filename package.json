@@ -47,6 +47,7 @@
   "dependencies": {
     "animejs": "^3.0.1",
     "charming": "^2.2.5",
+    "scrollmonitor": "^1.2.4",
     "simplex-noise": "^2.4.0"
   }
 }

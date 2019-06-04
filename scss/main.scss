@@ -3,15 +3,15 @@
 
 // Our variables
 $base-font-family: Helvetica, Arial, sans-serif;
-$title-font-family: $base-font-family;
+$title-font-family: 'Poppins', $base-font-family;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
-$text-color:       #1E1D1E;
-$background-color: #EFEFF0;
+$text-color:       #333;
+$background-color: #f4f4f4;
 $brand-color:      #3a7fd3;
 
 $color-purple: #8146d3;
@@ -19,10 +19,15 @@ $color-blue: #466ed3;
 $color-red: #d3466c;
 $color-green: #30975b;
 
+$color-sea: #466681;
+$color-sky: #CEE2D9;
+$color-grass: #929965;
+$color-sun: #E1B129;
+$color-dusk: #EA805A;
+$color-peach: #F4D8CD;
 
-$grey-color:       #353535;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$grey-color:       #999;
+
 $on-palm:          600px;
 $on-laptop:        800px;
 
