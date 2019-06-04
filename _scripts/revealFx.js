@@ -8,9 +8,8 @@
  * Copyright 2016, Codrops
  * http://www.codrops.com
  */
-
 import anime from 'animejs'
-window.anime = anime
+
 const createDOMEl = (type, className, content) => {
 	var el = document.createElement(type);
 	el.className = className || '';
@@ -45,14 +44,19 @@ const defaultOptions = {
 /**
  * RevealFx obj.
  */
-class RevealFx {
+export default class RevealFx {
 	constructor(el, options) {
 		this.el = el;
 		this.options = Object.assign({}, defaultOptions);
 		Object.assign(this.options, options);
+		this._init = this._init.bind(this);
+		this._layout = this._layout.bind(this);
+		this._getTransformSettings = this._getTransformSettings.bind(this);
+		this.reveal = this.reveal.bind(this);
+
 		this._init();
 	}
-	init() {
+	_init() {
 		this._layout();
 	};
 	_layout() {
@@ -77,27 +81,27 @@ class RevealFx {
 
 		switch (direction) {
 			case 'lr':
-				val = 'scale3d(0,1,1)';
+				val = 'scale3d(1,1,1)'; //val = 'scale3d(0,1,1)';
 				origin = '0 50%';
 				origin_2 = '100% 50%';
 				break;
 			case 'rl':
-				val = 'scale3d(0,1,1)';
+				val = 'scale3d(1,1,1)'; //val = 'scale3d(0,1,1)';
 				origin = '100% 50%';
 				origin_2 = '0 50%';
 				break;
 			case 'tb':
-				val = 'scale3d(1,0,1)';
+				val = 'scale3d(1,1,1)'; //val = 'scale3d(1,0,1)';
 				origin = '50% 0';
 				origin_2 = '50% 100%';
 				break;
 			case 'bt':
-				val = 'scale3d(1,0,1)';
+				val = 'scale3d(1,1,1)'; //val = 'scale3d(1,0,1)';
 				origin = '50% 100%';
 				origin_2 = '50% 0';
 				break;
 			default:
-				val = 'scale3d(0,1,1)';
+				val = 'scale3d(1,1,1)'; //val = 'scale3d(0,1,1)';
 				origin = '0 50%';
 				origin_2 = '100% 50%';
 				break;
@@ -184,3 +188,5 @@ class RevealFx {
 	};
 
 }
+
+window.RevealFx = RevealFx;

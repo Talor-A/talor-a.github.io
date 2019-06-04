@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Scratch
+title: Scratch.app
 image: "images/mockuper.png"
 class: scratch
-role: Web Designer
+role: Web Application Developer
 short-description: Creating learning tools for students. Built in Los Angeles. Launching soon.
 ---
 

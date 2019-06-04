@@ -1,4 +1,5 @@
 .home {
+  overflow-x: hidden;
   .intro {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -29,7 +30,7 @@
       justify-self: end;
       grid-row: 2;
       margin-bottom: 0px;
-      margin-right: 6px;
+      padding-right: 6px;
     }
     .title-2 {
       grid-column: 7;
@@ -69,7 +70,7 @@
       flex-direction: row;
       justify-content: center;
       align-items: stretch;
-      height: 20px;
+      height: 8px;
       > div {
         flex-grow: 1;
       }
@@ -91,7 +92,30 @@
     }
   }
 
+  .about {
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+      font-size: 3em;
+      text-align: center;
+    }
+    max-width: 660px;
+  }
+
+  .portfolio-intro {
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > h1 {
+      font-size: 3em;
+    }
+  }
   .portfolio {
+    height: 90vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr auto auto 1fr;
@@ -99,6 +123,10 @@
     .portfolio-desc {
       > h1 {
         font-size: 3em;
+      }
+      > span {
+        color: $grey-color;
+        font-weight: 400;
       }
       grid-column: 4/11;
       grid-row: 2/3;
@@ -147,11 +175,27 @@
     }
     &.livinghealth {
       // background-color: $color-grass;
+      .portfolio-image-wrap {
+
+        .portfolio-image-overlay {
+          background-color: lighten($color-grass, $amount: 20);
+          opacity: .37;
+        }
+        .portfolio-image-bg {
+          background-color: $color-grass;
+        }
+      }
     }
     &.scratch {
       // background-color: $color-sky;
+      .portfolio-desc {
+        grid-column: 9/11;
+        // grid-row: 4;
+        z-index: 1;
+        align-self: center;
+      }
       .portfolio-image-wrap {
-        grid-column: 2/-6;
+        grid-column: 2/8;
         grid-row: 2/3;
         .portfolio-image-bg {
           background-color: $color-sea;

@@ -74,24 +74,29 @@ gulp.task('experiments', (done) => {
   })
 })
 
-gulp.task('scripts', () => {
-  // set up the browserify instance on a task basis
-  var b = browserify({
-    entries: './_scripts/main.js',
-    debug: true,
-    // defining transforms here will avoid crashing your stream
-    transform: [babelify, reactify]
-  });
+gulp.task('scripts', (done) => {
+  glob('./_scripts/*.js', (err, files) => {
+    if(err) done(err)
+    let tasks = files.map((entry) =>
+      browserify({ 
+        entries: [entry],
+        debug:true,
+        transform: [babelify, reactify]
+      })
+        .bundle()
+        .pipe(source(entry))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
 
-  return b.bundle()
-    .pipe(source('main.min.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    // Add transformation tasks to the pipeline here.
-    // .pipe($.uglify())
-    .on('error', log.error)
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('scripts'));
+        .pipe($.rename({
+          dirname: '',
+          // extname: '.bundle.js'
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('scripts/'))
+    );
+    es.merge(tasks).on('end', done);
+  })
 });
 
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: blank
 ---
 
 <div class="home">
@@ -32,13 +32,22 @@ layout: default
 
   </section>
 
-  {% for post in site.portfolio %}
-  <section class=" portfolio {{post.class}} full-height">
+  <section class="about">
+    <h1>About Me</h1>
+    {% capture bio %}{% include text/bio.md %}{% endcapture %}
+    {{ bio | markdownify }}
+  </section>
 
-      <div  class="portfolio-desc">
-          <h1>{{post.title}}</h1>
-          <span>{{post.role}}</span>
-        </div>
+  <section class="portfolio-intro">
+    <h1>Past Work</h1>
+  </section>
+  {% for post in site.portfolio %}
+  <section class=" portfolio {{post.class}}">
+
+    <div class="portfolio-desc">
+      <h1>{{post.title}}</h1>
+      <span>{{post.role}}</span>
+    </div>
     <div class="portfolio-image-wrap">
       <div class="portfolio-image-bg"></div>
       <div class="portfolio-image-overlay"></div>
@@ -49,44 +58,7 @@ layout: default
   </section>
 
   {% endfor %}
-
-
-  <script>
-    window.addEventListener('load', function () {
-      var anime = window.anime;
-      var col1 = document.querySelector('.col1');
-      var col2 = document.querySelector('.col2');
-      var col3 = document.querySelector('.col3');
-      var col4 = document.querySelector('.col4');
-      var col5 = document.querySelector('.col5');
-      var col6 = document.querySelector('.col6');
-
-      var ani1 = anime({
-        targets: col1,
-        rotate: 180,
-        autoplay: false
-      })
-
-      col1.addEventListener("mouseenter", ani1.play);
-
-      var ani2 = anime({
-        targets: col2,
-        rotateX: 360,
-        autoplay: false,
-      })
-      col2.addEventListener("mouseenter", ani2.play);
-
-      var ani3 = anime({
-        targets: col3,
-        rotateY: 360,
-        autoplay: false,
-        easing: 'easeInOutSine'
-      })
-      col3.addEventListener("mouseenter", ani3.play);
-
-    })
-
-
-  </script>
-
 </div>
+{% include footer.html %}
+<script async src="{{ '/scripts/home.js' | relative_url }}"></script>
+
