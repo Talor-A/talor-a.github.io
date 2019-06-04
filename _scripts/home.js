@@ -47,12 +47,13 @@ const squareAnimations = [
 ]
 
 window.addEventListener('load', () => {
+  document.querySelector('.load-screen').classList.add('loaded')
 
 anime({
   targets: '.home-colors > div',
   opacity: [0, 1],
   translateY: "-=40",
-  delay: anime.stagger(150),
+  delay: anime.stagger(150, {start: 200}),
   complete: (anim) => {
     // apply animations here to aviod weird anime.js bug
     anim.animatables.forEach(({ target }, i) => {
@@ -69,14 +70,14 @@ anime({
   targets: '.home-nav',
   opacity: [0, 1],
   translateX: [-100, 0],
-  delay: 600
+  delay: 800
 })
 
 
 var title1 = new RevealFx(document.querySelector('.title-1'), {
   revealSettings: {
     bgcolor: colors.dusk,
-    delay: 250,
+    delay: 450,
     onCover: (contentEl, revealerEl) => {
       contentEl.style.opacity = 1;
     }
@@ -86,7 +87,7 @@ var title1 = new RevealFx(document.querySelector('.title-1'), {
 var title2 = new RevealFx(document.querySelector('.title-2'), {
   revealSettings: {
     bgcolor: colors.sky,
-    delay: 400,
+    delay: 600,
     onCover: (contentEl, revealerEl) => {
       contentEl.style.opacity = 1;
     }
