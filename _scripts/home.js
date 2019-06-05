@@ -46,6 +46,18 @@ const squareAnimations = [
   }
 ]
 
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  console.log(anchor.href)
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+      });
+  });
+});
+  
+setTimeout(() => document.querySelector('.load-screen').classList.add('timed'), 200)
 window.addEventListener('load', () => {
   document.querySelector('.load-screen').classList.add('loaded')
 
@@ -135,10 +147,6 @@ aboutScrollMon.enterViewport(() => {
   aboutScrollMon.destroy();
 });
 
-let watcher1 = scrollMonitor.create(document.querySelector('.amada'), -300)
-let watcher2 = scrollMonitor.create(document.querySelector('.livinghealth'), -300)
-let watcher3 = scrollMonitor.create(document.querySelector('.scratch'), -300)
-
 const portfolio_config = [
   {
     section: '.amada',
@@ -180,7 +188,6 @@ const portfolio_config = [
         }
       }
     },
-    bgSettings: {}
   },
   {
     section: '.livinghealth',
@@ -205,7 +212,7 @@ const portfolio_config = [
     },
     descSettings: {
       revealSettings : {
-        bgcolor: colors.sky,
+        bgcolor: colors.sun,
         direction: 'lr',
         delay: 400,
         onCover: function(contentEl, revealerEl) {
@@ -222,7 +229,6 @@ const portfolio_config = [
         }
       }
     },
-    bgSettings: {}
   },
   {
     section: '.scratch',
@@ -264,7 +270,6 @@ const portfolio_config = [
         }
       }
     },
-    bgSettings: {}
   },
 ]
 

@@ -10,7 +10,7 @@
   z-index: 1000;
   transition: transform .2s;
 
-  &.loaded {
+  &.loaded.timed {
     transform: scaleX(0);
     // opacity: 0;
   }
