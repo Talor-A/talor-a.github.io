@@ -268,7 +268,7 @@
       .portfolio-desc {
         @include min-media-query($on-laptop) {
           grid-row: 2/3;
-          grid-column: 4/11;
+          grid-column: 4/8;
         }
       }
       .portfolio-image-wrap {
