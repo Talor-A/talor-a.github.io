@@ -37,7 +37,6 @@
     "gulp-uglify": "^3.0.0",
     "gulplog": "^1.0.0",
     "reactify": "^1.1.1",
-    "run-sequence": "^2.2.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },

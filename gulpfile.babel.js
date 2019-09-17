@@ -2,7 +2,6 @@
 
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
-import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 
 var browserify = require('browserify');
@@ -206,7 +205,7 @@ gulp.task('gh-pages', () => {
 });
 
 gulp.task('deploy', () => {
-  runSequence(
+  gulp.series(
     'fix-config',
     'cleanup-build',
     'scss',
