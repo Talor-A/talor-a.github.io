@@ -21,7 +21,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://talor-a.github.io/" # the base hostname & protocol for your site
 twitter_username: talor_a
 github_username:  talor-a
-resume_url: https://drive.google.com/open?id=1hro56MCj7yXen_5UMl_RnoLYTJK3Go3u
+resume_url: https://drive.google.com/open?id=1EaArRbgwkH0ZU2tN-j3mAGjC9yuCdoRc
 
 # Build settings
 markdown: kramdown
