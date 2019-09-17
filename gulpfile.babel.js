@@ -130,8 +130,12 @@ gulp.task('scss', () => {
     .pipe(gulp.dest('css'));
 });
 
+gulp.task('jekyll-build', gulp.parallel('scripts','experiments', 'scss'), $.shell.task(['jekyll build']));
+
+gulp.task('jekyll-build-for-deploy', $.shell.task(['jekyll build']));
+
 // Watch change in files.
-gulp.task('serve', ['jekyll-build'], () => {
+gulp.task('serve', gulp.series('jekyll-build', () => {
   browserSync.init({
     notify: false,
     // Run as an https by uncommenting 'https: true'
@@ -155,14 +159,14 @@ gulp.task('serve', ['jekyll-build'], () => {
     '_experiments/**/*.md',
     '_portfolio/**/*.html',
     '_portfolio/**/*.md',
-  ], ['jekyll-build', browserSync.reload]);
+  ], gulp.series(['jekyll-build', browserSync.reload]));
 
   // Watch scss changes.
-  gulp.watch('scss/**/*.scss', ['scss']);
+  gulp.watch('scss/**/*.scss', gulp.series('scss'));
 
   // Watch JavaScript changes.
-  gulp.watch('_scripts/**/*.js', ['scripts','experiments']);
-});
+  gulp.watch('_scripts/**/*.js', gulp.series(['scripts','experiments']));
+}));
 
 
 gulp.task('fix-config', () => {
@@ -178,10 +182,6 @@ gulp.task('revert-config', () => {
     .pipe($.clean())
     .pipe(gulp.dest('.'));
 });
-
-gulp.task('jekyll-build', ['scripts','experiments', 'scss'], $.shell.task(['jekyll build']));
-
-gulp.task('jekyll-build-for-deploy', $.shell.task(['jekyll build']));
 
 // Default task.
 gulp.task('build', () =>
