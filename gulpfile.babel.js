@@ -19,7 +19,10 @@ const $ = gulpLoadPlugins();
 
 // Delete the _site directory.
 gulp.task('cleanup-build', () =>
-  gulp.src('_site', { read: false })
+  gulp.src('_site', { 
+    read: false, 
+    allowEmpty:true // should fix netlify deploy error
+  })
     .pipe($.clean())
 );
 
