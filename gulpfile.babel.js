@@ -18,14 +18,14 @@ var glob = require('glob')
 const $ = gulpLoadPlugins();
 
 // Delete the _site directory.
-gulp.task('cleanup-build', () => {
-  return gulp.src('_site', { read: false })
-    .pipe($.clean());
-});
+gulp.task('cleanup-build', () =>
+  gulp.src('_site', { read: false })
+    .pipe($.clean())
+);
 
 // Minify the HTML.
-gulp.task('minify-html', () => {
-  return gulp.src('_site/**/*.html')
+gulp.task('minify-html', () =>
+  gulp.src('_site/**/*.html')
     .pipe($.htmlmin({
       removeComments: true,
       collapseWhitespace: true,
@@ -37,28 +37,28 @@ gulp.task('minify-html', () => {
       removeStyleLinkTypeAttributes: true,
       removeOptionalTags: true
     }))
-    .pipe(gulp.dest('_site'));
-});
+    .pipe(gulp.dest('_site'))
+);
 
 // Optimize images.
-gulp.task('minify-images', () => {
+gulp.task('minify-images', () =>
   gulp.src('images/**/*')
     .pipe($.imagemin({
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest('_site/images'));
-});
+    .pipe(gulp.dest('_site/images'))
+);
 
 
 gulp.task('experiments', (done) => {
 
   glob('./_scripts/experiments/*.js', (err, files) => {
-    if(err) done(err)
+    if (err) done(err)
     let tasks = files.map((entry) =>
-      browserify({ 
+      browserify({
         entries: [entry],
-        debug:true,
+        debug: true,
         transform: [babelify, reactify]
       })
         .bundle()
@@ -75,11 +75,11 @@ gulp.task('experiments', (done) => {
 
 gulp.task('scripts', (done) => {
   glob('./_scripts/*.js', (err, files) => {
-    if(err) done(err)
+    if (err) done(err)
     let tasks = files.map((entry) =>
-      browserify({ 
+      browserify({
         entries: [entry],
-        debug:true,
+        debug: true,
         transform: [babelify, reactify]
       })
         .bundle()
@@ -129,7 +129,7 @@ gulp.task('scss', () => {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('jekyll-build', gulp.parallel('scripts','experiments', 'scss'), $.shell.task(['jekyll build']));
+gulp.task('jekyll-build', gulp.parallel('scripts', 'experiments', 'scss'), $.shell.task(['jekyll build']));
 
 gulp.task('jekyll-build-for-deploy', $.shell.task(['jekyll build']));
 
@@ -164,38 +164,37 @@ gulp.task('serve', gulp.series('jekyll-build', () => {
   gulp.watch('scss/**/*.scss', gulp.series('scss'));
 
   // Watch JavaScript changes.
-  gulp.watch('_scripts/**/*.js', gulp.series(['scripts','experiments']));
+  gulp.watch('_scripts/**/*.js', gulp.series(['scripts', 'experiments']));
 }));
 
 
-gulp.task('fix-config', () => {
+gulp.task('fix-config', () =>
   gulp.src('_config.yml')
     // .pipe($.replace('baseurl: ""', 'baseurl: "talor-site"'))
     .pipe($.clean())
-    .pipe(gulp.dest('.'));
-});
+    .pipe(gulp.dest('.'))
+);
 
-gulp.task('revert-config', () => {
+gulp.task('revert-config', () =>
   gulp.src('_config.yml')
     // .pipe($.replace('baseurl: "talor-site"', 'baseurl: ""'))
     .pipe($.clean())
-    .pipe(gulp.dest('.'));
-});
+    .pipe(gulp.dest('.'))
+);
 
 // Default task.
-gulp.task('build', () =>
-  runSequence(
-    'fix-config',
-    'cleanup-build',
-    'scss',
-    'scripts',
-    'experiments',
-    'jekyll-build-for-deploy',
-    'minify-html',
-    'css',
-    'minify-images',
-    'revert-config'
-  )
+gulp.task('build', gulp.series(
+  'fix-config',
+  'cleanup-build',
+  'scss',
+  'scripts',
+  'experiments',
+  'jekyll-build-for-deploy',
+  'minify-html',
+  'css',
+  'minify-images',
+  'revert-config'
+)
 );
 
 // Depoly website to gh-pages.
@@ -204,18 +203,17 @@ gulp.task('gh-pages', () => {
     .pipe($.ghPages());
 });
 
-gulp.task('deploy', () => {
-  gulp.series(
-    'fix-config',
-    'cleanup-build',
-    'scss',
-    'scripts',
-    'jekyll-build-for-deploy',
-    'minify-html',
-    'css',
-    'minify-images',
-    'gh-pages',
-    'revert-config'
-  )
-});
+gulp.task('deploy', gulp.series(
+  'fix-config',
+  'cleanup-build',
+  'scss',
+  'scripts',
+  'jekyll-build-for-deploy',
+  'minify-html',
+  'css',
+  'minify-images',
+  'gh-pages',
+  'revert-config'
+)
+);
 
