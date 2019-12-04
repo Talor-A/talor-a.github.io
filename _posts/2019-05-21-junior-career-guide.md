@@ -74,32 +74,10 @@ main points:
 
 
 1. **Summary**:  Remember that this is just the beginning of your journey. It won't be easy. You might not land that client you were counting on. You'll f*** up sometimes. If that happens, chalk it up to a learning experience and try again. 
-2. **Clincher**:  So, the next time you hear about one of these celebrities or brands, I hope you remember there’s a lot more history there than meets the eye. Thank you. 
+2. **Clincher**: Soon, though, you'll be on your way to a possible future career!
 
 
 
 Works Cited
 
 
-
-Calkins, Matt. “Pool Skating Evolved from 1970s Drought.” *Sandiegouniontribune.com*, San Diego Union Tribune, 24 Aug. 2016, www.sandiegouniontribune.com/sdut-clash-at-clairemont-tony-hawk-pro-skateboarding-2015jun13-story.html.
-
-
-
-Corsillo, Liza. “What Skaters Wore Before Skate Style Was Trendy.” *GQ*, GQ, 13 Oct. 2016, www.gq.com/gallery/best-skateboarding-style-photos.
-
-
-
-O'Dell, Patrick, director. *Dumb: The Story of Big Brother Magazine*. Hulu Originals, 2017.
-
-
-
-Spitz, Marc. “Jackass: An Oral History.” *Maxim*, 26 Oct. 2010, www.maxim.com/entertainment/jackass-oral-history.
-
-
-
-Trufelman, Avery and Roman Mars. “Episode 265: The Pool and the Stream.” Audio podcast. 99% Invisible. Radiotopia, 2017. 
-
-
-
-Wheeler, André-Naquian. “'Skateboarding Is Not a Fashion' Tracks the Colorful History of Skate Apparel.” *I-d*, VICE, 2 Mar. 2018, i-d.vice.com/en_us/article/ywq49v/skateboarding-is-not-a-fashion-tracks-the-colorful-history-of-skate-apparel.
