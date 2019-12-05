@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: "images" # Media files will be stored in the repo under images
+public_folder: "/images" # The src attribute for uploaded media will begin with /images
+
+collections:
+  - name: "portfolio" # Used in routes, e.g., /admin/collections/blog
+    label: "Portfolio" # Used in the UI
+    folder: "_portfolio" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
+      - {label: "Custom CSS class", name: "class", widget: "string"}
+      - {label: "Role (Job Title)", name: "role", widget: "string"}
+      - {label: "Short Description", name: "short-description", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
