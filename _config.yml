@@ -47,5 +47,7 @@ collections:
   experiments:
     output: true
     permalink: /experiments/:path/
-
+  projects:
+    output: true
+    permalink: /projects/:path/
   

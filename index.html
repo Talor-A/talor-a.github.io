@@ -60,6 +60,15 @@ layout: blank
   </section>
 
   {% endfor %}
+  <section class="projects">
+    <h1>Things</h1>
+    {% for project in site.projects %}
+    <div>
+      <h3>{{project.title}}</h3>
+      {{ project.body | markdownify }}
+    </div>
+    {% endfor %}
+  </section>
 </div>
 {% include footer.html %}
 
