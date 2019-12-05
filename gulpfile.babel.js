@@ -4,6 +4,7 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 
+const child = require('child_process');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -16,17 +17,19 @@ var glob = require('glob')
 
 
 const $ = gulpLoadPlugins();
+const siteRoot = '_site';
 
+
+// CLEANUP_BUILD ============================================================
 // Delete the _site directory.
-gulp.task('cleanup-build', () =>
-  gulp.src('_site', { 
-    read: false, 
-    allowEmpty:true // should fix netlify deploy error
-  })
-    .pipe($.clean())
+gulp.task('cleanup-build', () => gulp.src('_site', {
+  read: false,
+  allowEmpty: true // should fix netlify deploy error
+})
+  .pipe($.clean())
 );
 
-// Minify the HTML.
+// MINIFY-HTML ============================================================
 gulp.task('minify-html', () =>
   gulp.src('_site/**/*.html')
     .pipe($.htmlmin({
@@ -43,7 +46,7 @@ gulp.task('minify-html', () =>
     .pipe(gulp.dest('_site'))
 );
 
-// Optimize images.
+// IMAGES ============================================================
 gulp.task('minify-images', () =>
   gulp.src('images/**/*')
     .pipe($.imagemin({
@@ -53,7 +56,7 @@ gulp.task('minify-images', () =>
     .pipe(gulp.dest('_site/images'))
 );
 
-
+// EXPERIMENTS ============================================================
 gulp.task('experiments', (done) => {
 
   glob('./_scripts/experiments/*.js', (err, files) => {
@@ -76,6 +79,7 @@ gulp.task('experiments', (done) => {
   })
 })
 
+// SCRIPTS ============================================================
 gulp.task('scripts', (done) => {
   glob('./_scripts/*.js', (err, files) => {
     if (err) done(err)
@@ -101,7 +105,7 @@ gulp.task('scripts', (done) => {
   })
 });
 
-
+// CSS ============================================================
 // Minify and add prefix to css.
 gulp.task('css', () => {
   const AUTOPREFIXER_BROWSERS = [
@@ -122,7 +126,7 @@ gulp.task('css', () => {
     .pipe(gulp.dest('_site/css'));
 });
 
-// Compile scss to css.
+// SCSS ============================================================
 gulp.task('scss', () => {
   return gulp.src('scss/main.scss')
     .pipe($.sass({
@@ -132,25 +136,31 @@ gulp.task('scss', () => {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('jekyll-build', gulp.parallel('scripts', 'experiments', 'scss'), $.shell.task(['jekyll build']));
+gulp.task('jekyll', () => child.spawn('jekyll', ['build',
+  '--incremental',
+  '--drafts'
+]))
 
-gulp.task('jekyll-build-for-deploy', $.shell.task(['jekyll build']));
+gulp.task('jekyll-build', gulp.series([gulp.parallel('scripts', 'experiments', 'scss'), 'jekyll']));
+
+gulp.task('jekyll-build-for-deploy', gulp.series(['jekyll-build']));
 
 // Watch change in files.
-gulp.task('serve', gulp.series('jekyll-build', () => {
-  browserSync.init({
+gulp.task('serve', gulp.series(['jekyll-build', () => {
+  const server = browserSync.create()
+  server.init({
     notify: false,
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: '_site',
+    server: siteRoot,
     port: 3000
   });
 
   // Warch html changes.
   gulp.watch([
-    'css/**/*.css',
+    // 'css/**/*.css',
     'scripts/**/*.js',
     '_includes/**/*.html',
     '_includes/**/*.md',
@@ -161,33 +171,17 @@ gulp.task('serve', gulp.series('jekyll-build', () => {
     '_experiments/**/*.md',
     '_portfolio/**/*.html',
     '_portfolio/**/*.md',
-  ], gulp.series(['jekyll-build', browserSync.reload]));
+  ], gulp.series(['jekyll-build', server.reload]));
 
   // Watch scss changes.
-  gulp.watch('scss/**/*.scss', gulp.series('scss'));
+  gulp.watch('scss/**/*.scss', gulp.series(['scss', 'jekyll-build', server.reload]));
 
   // Watch JavaScript changes.
-  gulp.watch('_scripts/**/*.js', gulp.series(['scripts', 'experiments']));
-}));
-
-
-gulp.task('fix-config', () =>
-  gulp.src('_config.yml')
-    // .pipe($.replace('baseurl: ""', 'baseurl: "talor-site"'))
-    .pipe($.clean())
-    .pipe(gulp.dest('.'))
-);
-
-gulp.task('revert-config', () =>
-  gulp.src('_config.yml')
-    // .pipe($.replace('baseurl: "talor-site"', 'baseurl: ""'))
-    .pipe($.clean())
-    .pipe(gulp.dest('.'))
-);
+  gulp.watch('_scripts/**/*.js', gulp.series(['scripts', 'experiments', 'jekyll-build', server.reload]));
+}]));
 
 // Default task.
 gulp.task('build', gulp.series(
-  'fix-config',
   'cleanup-build',
   'scss',
   'scripts',
@@ -196,27 +190,6 @@ gulp.task('build', gulp.series(
   'minify-html',
   'css',
   'minify-images',
-  'revert-config'
-)
-);
-
-// Depoly website to gh-pages.
-gulp.task('gh-pages', () => {
-  return gulp.src('./_site/**/*')
-    .pipe($.ghPages());
-});
-
-gulp.task('deploy', gulp.series(
-  'fix-config',
-  'cleanup-build',
-  'scss',
-  'scripts',
-  'jekyll-build-for-deploy',
-  'minify-html',
-  'css',
-  'minify-images',
-  'gh-pages',
-  'revert-config'
 )
 );
 
