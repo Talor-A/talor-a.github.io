@@ -1,0 +1,61 @@
+---
+layout: default
+permalink: /
+---
+
+
+<div class="content-container home">
+  <h1>Hello World!</h1>
+  {%- comment -%} <div class='home-links'>
+      <a href="/about.html">about me</a>
+      <a href="/work.html">work</a>
+      <a href="/projects.html">projects</a>
+    </div> {%- endcomment -%}
+
+  {% capture bio %}
+    {%- include text/bio.md -%}
+  {% endcapture %}
+  {{ bio | markdownify }}
+</div>
+
+<div class="about content-container">
+
+  {% capture bio %}
+    {%- include text/about.md -%}
+  {% endcapture %}
+  {{ bio | markdownify }}
+</div>
+
+<div class="projects content-container">
+  {%- comment -%} {% include goback.html %} {%- endcomment -%}
+  <h1>Projects</h1>
+
+  {% for project in site.projects %}
+    <div class="project">
+      <p class="project-title">{{ project.title }}</p>
+      <div class="project-description">
+        {{project.excerpt | markdownify }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="contact content-container">
+  <h1>Contact Me</h1>
+  <p>leave your name & email and I'll be sure to get back to you soon.</p>
+
+
+  <form name="contact-form" netlify>
+  <p>
+    <label>Name <input type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>Email <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
+</div>
+
+<div style="height:20vh"></div>

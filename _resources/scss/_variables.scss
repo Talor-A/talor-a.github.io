@@ -1,0 +1,47 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,300i,700";
+
+
+$color-sea: #466681;
+$color-sky: #CEE2D9;
+$color-grass: #929965;
+$color-sun: #E1B129;
+$color-dusk: #EA805A;
+$color-peach: #F4D8CD;
+
+$light: #E9E2D6;
+$dark: #141311;
+$primary: $color-dusk;
+
+// Font Family
+$font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+
+// Base Font for HTML
+$base-font-size: 18px;
+
+// Paragraph Styles
+$paragraph-color      : $dark;
+$paragraph-size       : 18px;
+$paragraph-line-height: 1.5em;
+$paragraph-margin     : 20px;
+
+// Header Styles
+$header-color      : $dark;
+$header-size       : 40px;
+$header-line-height: 1.25em;
+$header-margin     : $paragraph-margin * 1.2;
+
+// Blockquote Styles
+$blockquote-color      : $dark;
+$blockquote-size       : 23px;
+$blockquote-line-height: 1.5em;
+$blockquote-margin     : $paragraph-margin * 1.5;
+
+// Links
+$link-color: #459bd9;
+
+// hr
+$hr-margin: 30px;
+
+// Type Misc
+$font-weight-bold: 800;
+$border-color: #DADADA;

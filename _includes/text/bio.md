@@ -1,7 +1,6 @@
 
-My name's Talor Anderson. I was born and raised in Los Angeles, and I'm currently studying **Computer Science** at **Cal Poly Pomona** (**graduating 2020**). I'm fluent with Python and JavaScript and have created mobile apps with React Native. I love creating new and engaging experiences for web and mobile. Small businesses and startups have been my forte, but I'm also looking to broaden my horizons at a larger company. If you're interested in working together, [get in touch 📬](mailto:{{site.email}}).
+Hi there 👋. I'm Talor. 
 
-Outside my work, I love to rock climb, fly drones, and take walks with my pup. 
+A passionate designer & developer with the goal to build and create software that makes a real impact in the world.
 
-Below, check out the projects I've worked on or see my [resume]({{site.resume_url}}).
-
+![it me!](/img/outside.jpg "it me!")

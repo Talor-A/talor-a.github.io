@@ -1,0 +1,47 @@
+body {
+  color: $dark;
+  background-color: $light;
+  transition: all .5s ease;
+}
+html.dark > body {
+  color: $light;
+  background-color: $dark;
+}
+
+// h1 {
+//   font-size: 6vw;
+// }
+// h2 {
+//   font-size: 4.8vw;
+// }
+// h3 {
+//   font-size: 3vw;
+// }
+// h4 {
+//   font-size: 2.5vw;
+// }
+// h5 {
+//   font-size: 2.2vw;
+// }
+// h6 {
+//   font-size: 2vw;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   font-family: 'Space Mono', monospace;
+//   font-weight: bold;
+// }
+
+a {
+  text-decoration: none;
+  color: $primary;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
