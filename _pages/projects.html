@@ -1,0 +1,18 @@
+---
+layout: default
+permalink: /projects
+---
+
+<div class="projects content-container">
+  {% include goback.html %}
+  <h1>Projects</h1>
+
+  {% for project in site.projects %}
+    <div class="project">
+      <p class="project-title">{{ project.title }}</p>
+      <div class="project-description">
+        {{project.excerpt | markdownify }}
+      </div>
+    </div>
+    {% endfor %}
+</div>
