@@ -7,6 +7,7 @@ layout: content
 
 # Past Work
 
+<a class="button" href="{{site.resume_url}}" target="_blank">View my Resume</a>
 
 ## Experience
 

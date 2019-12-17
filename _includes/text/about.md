@@ -1,4 +1,4 @@
-# About Talor
+# About Me
 
 I'm a software developer and creative coder, passionate about exploring how software can shape the world and the people around us.
 

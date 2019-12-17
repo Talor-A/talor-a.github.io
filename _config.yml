@@ -38,7 +38,7 @@ highlighter: rouge
 lsi: false
 excerpt_separator: |+
 
-
+resume_url: https://drive.google.com/open?id=18YST_yucGyDjMK506xMjzbOLX2i116HI
 incremental: false
 detach: false
 port: 4000
