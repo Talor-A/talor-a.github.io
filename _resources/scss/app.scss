@@ -175,7 +175,8 @@ button, a.button {
   color: inherit;
   background: none;
   border-style: none;
-
+  display: inline-block;
+  
   &:hover {
     text-decoration: none;
   }
